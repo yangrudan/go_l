@@ -264,3 +264,21 @@ var identifier []type（不需要说明长度）。
 ```go
 var slice1 []type = arr1[start:end]
 ```
+
+用make()创建切片, make 的使用方式是：func make([]T, len, cap)，其中 cap 是可选参数。
+
+```go
+var slice1 []type = make([]type, len)
+
+//或者简写
+slice1 := make([]type, len)  //make 接受 2 个参数：元素的类型以及切片的元素个数。
+
+
+//下面两种方法可以生成相同的切片
+make([]int, 50, 100)
+new([100]int)[0:50]  //生成数组再切片
+```
+
+new(T) 为每个新的类型T分配一片内存，初始化为 0 并且返回类型为*T的内存地址：这种方法 返回一个指向类型为 T，值为 0 的地址的指针，它适用于值类型如数组和结构体;
+
+make(T) 返回一个类型为 T 的初始值，它只适用于3种内建的引用类型：切片、map 和 channel。

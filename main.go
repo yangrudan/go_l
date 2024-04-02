@@ -1,16 +1,18 @@
 package main
+
 import "fmt"
 
 func main() {
-	array := [3]float64{7.0, 8.5, 9.1}
-	x := Sum(&array) // Note the explicit address-of operator
-	// to pass a pointer to the array
-	fmt.Printf("The sum of the array is: %f", x)
-}
-
-func Sum(a *[3]float64) (sum float64) {
-	for _, v := range a { // derefencing *a to get back to the array is not necessary!
-		sum += v
+	var slice1 []int = make([]int, 10)
+	// load the array/slice:
+	for i := 0; i < len(slice1); i++ {
+		slice1[i] = 5 * i
 	}
-	return
+
+	// print the slice:
+	for i := 0; i < len(slice1); i++ {
+		fmt.Printf("Slice at %d is %d\n", i, slice1[i])
+	}
+	fmt.Printf("\nThe length of slice1 is %d\n", len(slice1))
+	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
 }
