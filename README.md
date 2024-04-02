@@ -97,11 +97,45 @@ a := 1
 
 因 go 语言行尾行尾自动补全 ; 分号， 字符串拼接如下
 
-```bash
+```go
 str := "Beginning of the string " +
 	"second part of the string"
 ```
 
 Go 中使用 strings 包来完成对字符串的主要操作:
 
-### 3.1 前缀和后缀
+### 3.1 strings
+
+```go
+//前缀和后缀
+strings.HasPrefix(s, prefix string) bool
+strings.HasSuffix(s, suffix string) bool
+
+//字符串包含关系
+strings.Contains(s, substr string) bool
+
+//返回字符串 str 在字符串 s 中的索引（str 的第一个字符的索引
+strings.Index(s, str string) int
+//最后出现位置的索引
+strings.LastIndex(s, str string) int
+
+
+//Replace 用于将字符串 str 中的前 n 个字符串 old 替换为字符串 new，并返回一个新的字符串
+strings.Replace(str, old, new, n) string
+
+//统计字符串出现次数
+strings.Count(s, str string) int
+
+//Repeat 用于重复 count 次字符串 s 并返回一个新的字符串, 类似python * 3
+strings.Repeat(s, count int) string
+
+//修改字符串大小写
+strings.ToLower(s) string
+strings.ToUpper(s) string
+
+//修剪字符串
+//strings.TrimSpace(s) 来剔除字符串开头和结尾的空白符号
+//strings.Trim(s, "cut") 来将开头和结尾的 cut 去除掉
+
+//拼接 slice 到字符串
+```
