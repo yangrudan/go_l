@@ -143,4 +143,55 @@ strings.Split(s, sep) 用于自定义分割符号来对指定字符串进行分�
 
 //拼接 slice 到字符串
 strings.Join(sl []string, sep string) string
+
+//从字符串中读取内容
+strings.NewReader(str) 用于生成一个 Reader 并读取字符串中的内容，然后返回指向该 Reader 的指针
+Read() 从 []byte 中读取内容。
+ReadByte() 和 ReadRune() 从字符串中读取下一个 byte 或者 rune
+```
+
+### 3.2 strconv 
+与字符串相关的类型转换都是通过 strconv 包实现的。
+
+```go
+strconv.Itoa(i int) string 返回数字 i 所表示的字符串类型的十进制数
+
+strconv.FormatFloat(f float64, fmt byte, prec int, bitSize int) string 将 64 位浮点型的数字转换为字符串，其中 fmt 表示格式（其值可以是 'b'、'e'、'f' 或 'g'），prec 表示精度，bitSize 则使用 32 表示 float32，用 64 表示 float64
+
+strconv.Atoi(s string) (i int, err error) 将字符串转换为 int 型。
+
+strconv.ParseFloat(s string, bitSize int) (f float64, err error) 将字符串转换为 float64 型
+```
+
+## 四.日期和时间
+
+```go
+package main
+import (
+	"fmt"
+	"time"
+)
+
+var week time.Duration
+func main() {
+	t := time.Now()
+	fmt.Println(t) // e.g. Wed Dec 21 09:52:14 +0100 RST 2011
+	fmt.Printf("%02d.%02d.%4d\n", t.Day(), t.Month(), t.Year())
+	// 21.12.2011
+	t = time.Now().UTC()
+	fmt.Println(t) // Wed Dec 21 08:52:14 +0000 UTC 2011
+	fmt.Println(time.Now()) // Wed Dec 21 09:52:14 +0100 RST 2011
+	// calculating times:
+	week = 60 * 60 * 24 * 7 * 1e9 // must be in nanosec
+	week_from_now := t.Add(time.Duration(week))
+	fmt.Println(week_from_now) // Wed Dec 28 08:52:14 +0000 UTC 2011
+	// formatting times:
+	fmt.Println(t.Format(time.RFC822)) // 21 Dec 11 0852 UTC
+	fmt.Println(t.Format(time.ANSIC)) // Wed Dec 21 08:56:34 2011
+	// The time must be 2006-01-02 15:04:05
+	fmt.Println(t.Format("02 Jan 2006 15:04")) // 21 Dec 2011 08:52
+	s := t.Format("20060102")
+	fmt.Println(t, "=>", s)
+	// Wed Dec 21 08:52:14 +0000 UTC 2011 => 20111221
+}
 ```
