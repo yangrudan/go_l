@@ -92,3 +92,16 @@ var str string = "Go says hello to the world!"
 //函数体内声明局部变量
 a := 1
 ```
+
+## 三.字符串
+
+因 go 语言行尾行尾自动补全 ; 分号， 字符串拼接如下
+
+```bash
+str := "Beginning of the string " +
+	"second part of the string"
+```
+
+Go 中使用 strings 包来完成对字符串的主要操作:
+
+### 3.1 前缀和后缀

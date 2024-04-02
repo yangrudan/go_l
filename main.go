@@ -1,19 +1,11 @@
 package main
 
-var a string
+import "fmt"
+
 
 func main() {
-   a = "G"
-   print(a)
-   f1()
-}
+	str := "Beginning of the string " +
+	"second part of the string"
 
-func f1() {
-   a := "O"
-   print(a)
-   f2()
-}
-
-func f2() {
-   print(a)
+	fmt.Println(str)
 }
