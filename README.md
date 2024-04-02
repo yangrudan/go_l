@@ -134,8 +134,13 @@ strings.ToLower(s) string
 strings.ToUpper(s) string
 
 //修剪字符串
-//strings.TrimSpace(s) 来剔除字符串开头和结尾的空白符号
-//strings.Trim(s, "cut") 来将开头和结尾的 cut 去除掉
+strings.TrimSpace(s) 来剔除字符串开头和结尾的空白符号
+strings.Trim(s, "cut") 来将开头和结尾的 cut 去除掉
+
+//分割字符串
+strings.Fields(s) 将会利用 1 个或多个空白符号来作为动态长度的分隔符将字符串分割成若干小块
+strings.Split(s, sep) 用于自定义分割符号来对指定字符串进行分割，同样返回 slice。
 
 //拼接 slice 到字符串
+strings.Join(sl []string, sep string) string
 ```
