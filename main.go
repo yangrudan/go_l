@@ -8,9 +8,11 @@ func main() {
    n()
 }
 
-func n() { print(a) }
+func n() {
+   print(a)
+}
 
 func m() {
-   a := "O"
+   a = "O"
    print(a)
 }
