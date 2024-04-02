@@ -1,24 +1,16 @@
 package main
- 
-import "github.com/gin-gonic/gin"  //go get github.com/gin-gonic/gin
-import "go_l/mypackage"
 
-
-func ping(c *gin.Context) {
-	// c.JSON：返回JSON格式的数据
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
-}
+var a = "G"
 
 func main() {
-	println("trans.Pi", trans.Pi)
+   n()
+   m()
+   n()
+}
 
-	// 创建一个默认的路由引擎
-	r := gin.Default()
+func n() { print(a) }
 
-	// GET：请求方式；/hello：请求的路径
-	// 当客户端以GET方法请求/hello路径时，会执行后面的匿名函数
-	r.GET("/ping", ping)
-	r.Run(":8088")	// listen and serve (默认8080)
+func m() {
+   a := "O"
+   print(a)
 }
