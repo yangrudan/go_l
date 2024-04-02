@@ -203,3 +203,26 @@ func main() {
 一个指针变量通常缩写为 ptr
 
 对于任何一个变量 var， 如下表达式都是正确的：var == *(&var)
+
+## 六.数组与切片
+
+### 6.1 声明
+
+```go
+var identifier [len]type
+var arr1 [5]int
+
+a := [...]string{"a", "b", "c", "d"}
+for i := range a {
+	fmt.Println("Array item", i, "is", a[i])
+}
+
+//数组常量
+var arrAge = [5]int{18, 20, 15, 22, 16}
+```
+### 6.2 将数组传递给函数
+
++ 传递数组的指针
++ 使用数组的切片
+
+
