@@ -46,6 +46,8 @@ go env
 go mod init <project_name>
 
 go get github.com/gin-gonic/gin
+
+go mod tidy  # 去除不需要的模块， 清理.mod和.sum
 ```
 
 go.mod 文件只存在于模块的根目录中。模块子目录的代码包的导入路径等于模块根目录的导入路径（就是前面说的 module path）加上子目录的相对路径。
