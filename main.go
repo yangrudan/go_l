@@ -1,18 +1,15 @@
 package main
-
 import "fmt"
 
 func main() {
-	var slice1 []int = make([]int, 10)
-	// load the array/slice:
-	for i := 0; i < len(slice1); i++ {
-		slice1[i] = 5 * i
-	}
+	slFrom := []int{1, 2, 3}
+	slTo := make([]int, 10)
 
-	// print the slice:
-	for i := 0; i < len(slice1); i++ {
-		fmt.Printf("Slice at %d is %d\n", i, slice1[i])
-	}
-	fmt.Printf("\nThe length of slice1 is %d\n", len(slice1))
-	fmt.Printf("The capacity of slice1 is %d\n", cap(slice1))
+	n := copy(slTo, slFrom)
+	fmt.Println(slTo)
+	fmt.Printf("Copied %d elements\n", n) // n == 3
+
+	sl3 := []int{1, 2, 3}
+	sl3 = append(sl3, 4, 5, 6)
+	fmt.Println(sl3)
 }
