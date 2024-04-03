@@ -3,9 +3,10 @@ import "bytes"
 import "fmt"
 
 func main() {
-	a := []byte("go")
-    b := []byte("golang")
-    fmt.Println(bytes.Compare(a, b)) // -1
-    fmt.Println(bytes.Equal(a, b))   // false
+	buf := bytes.NewBuffer([]byte("Go"))
+	b := make([]byte, 2)
+	n, _ := buf.Read(b)
+	fmt.Println(string(b[:n])) // "Go"
+
 
 }
