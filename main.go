@@ -1,21 +1,26 @@
 package main
-import "fmt"
+
+import (
+	"container/list"
+	"fmt"
+)
 
 func main() {
-	var mapLit map[string]int
-	//var mapCreated map[string]float32
-	var mapAssigned map[string]int
+	// Create a new list and put some numbers in it.
+	l := list.New()
+	e4 := l.PushBack(4)
+	e1 := l.PushFront(1)
+	l.InsertBefore(3, e4)
+	l.InsertAfter(2, e1)
 
-	mapLit = map[string]int{"one": 1, "two": 2}
-	mapCreated := make(map[string]float32)
-	mapAssigned = mapLit
+	// Iterate through list and print its contents.
+	for e := l.Front(); e != nil; e = e.Next() {
+		fmt.Println(e.Value)
+	}
 
-	mapCreated["key1"] = 4.5
-	mapCreated["key2"] = 3.14159
-	mapAssigned["two"] = 3
-
-	fmt.Printf("Map literal at \"one\" is: %d\n", mapLit["one"])
-	fmt.Printf("Map created at \"key2\" is: %f\n", mapCreated["key2"])
-	fmt.Printf("Map assigned at \"two\" is: %d\n", mapLit["two"])
-	fmt.Printf("Map literal at \"ten\" is: %d\n", mapLit["ten"])
+	// Output:
+	// 1
+	// 2
+	// 3
+	// 4
 }

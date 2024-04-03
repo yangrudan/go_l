@@ -6,14 +6,27 @@
 > markdown-toc README.md --bullets='-' --maxdepth=2
 
 
+- [go_l](#go_l)
   - [一. go mod](#%E4%B8%80-go-mod)
+    - [1.1 历史发展](#11-%E5%8E%86%E5%8F%B2%E5%8F%91%E5%B1%95)
+    - [1.2 使用mod](#12-%E4%BD%BF%E7%94%A8mod)
   - [二.变量](#%E4%BA%8C%E5%8F%98%E9%87%8F)
   - [三.字符串](#%E4%B8%89%E5%AD%97%E7%AC%A6%E4%B8%B2)
+    - [3.1 strings](#31-strings)
+    - [3.2 strconv](#32-strconv)
   - [四.日期和时间](#%E5%9B%9B%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4)
   - [五.指针](#%E4%BA%94%E6%8C%87%E9%92%88)
   - [六.数组与切片](#%E5%85%AD%E6%95%B0%E7%BB%84%E4%B8%8E%E5%88%87%E7%89%87)
+    - [6.1 声明](#61-%E5%A3%B0%E6%98%8E)
+    - [6.2 将数组传递给函数](#62-%E5%B0%86%E6%95%B0%E7%BB%84%E4%BC%A0%E9%80%92%E7%BB%99%E5%87%BD%E6%95%B0)
+    - [6.3 切片](#63-%E5%88%87%E7%89%87)
+    - [6.4 切片append](#64-%E5%88%87%E7%89%87append)
   - [七.bytes包](#%E4%B8%83bytes%E5%8C%85)
+    - [7.1 bytes.Buffer的使用](#71-bytesbuffer%E7%9A%84%E4%BD%BF%E7%94%A8)
+    - [7.2 bytes.Reader的应用](#72-bytesreader%E7%9A%84%E5%BA%94%E7%94%A8)
+    - [7.3 应用](#73-%E5%BA%94%E7%94%A8)
   - [八.map](#%E5%85%ABmap)
+  - [九. 双向链表](#%E4%B9%9D-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)
 
 
 ## 一. go mod
@@ -454,3 +467,16 @@ func main() {
 	fmt.Println(mf)
 }
 ```
+
+## 九. 双向链表
+
+Go语言list容器定义在"container/list"包中，实现了一个双向链表。本文第一部分总结源码包中的方法，第二部分展示使用list包的常见示例用法以及刷题时的用法。
+
+|方法  |类型|  作用|
+|-----|-----|-----|
+|New()	|list包函数	|创建一个list
+|Next() *Element|	Element	|获取当前结点的下一个结点
+|Prev() *Element|	Element	|获取当前结点的上一个结点
+|Len() int|	List|	获取链表长度
+|Front() *Element|	List|	获取链表第一个结点
+|Back() *Element|	List|	获取链表最后一个结点
