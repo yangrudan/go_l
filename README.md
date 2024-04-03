@@ -1,6 +1,20 @@
 # go_l
 初学者学习指南
 
+> npm install -g markdown-toc
+>
+> markdown-toc README.md --bullets='-' --maxdepth=2
+
+
+  - [一. go mod](#%E4%B8%80-go-mod)
+  - [二.变量](#%E4%BA%8C%E5%8F%98%E9%87%8F)
+  - [三.字符串](#%E4%B8%89%E5%AD%97%E7%AC%A6%E4%B8%B2)
+  - [四.日期和时间](#%E5%9B%9B%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4)
+  - [五.指针](#%E4%BA%94%E6%8C%87%E9%92%88)
+  - [六.数组与切片](#%E5%85%AD%E6%95%B0%E7%BB%84%E4%B8%8E%E5%88%87%E7%89%87)
+  - [七.bytes包](#%E4%B8%83bytes%E5%8C%85)
+  - [八.map](#%E5%85%ABmap)
+
 
 ## 一. go mod
 
