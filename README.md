@@ -336,3 +336,76 @@ b.Write([]byte("Hello "))
 io.Copy(&b, strings.NewReader("World!"))
 fmt.Println(b.String()) // "Hello World!"
 ```
+
+### 7.2 bytes.Reader的应用
+
+bytes.Reader是bytes包提供的一个类型，用于从字节切片中读取数据。它实现了io.Reader、io.Seeker和io.ReaderAt接口，使得从字节切片中读取数据变得既方便又高效。
+
+> bytes.Reader可用于创建一个可读取指定字节切片的Reader。通过bytes.NewReader函数，您可以轻松地将字节切片转换为Reader。
+
+```go
+data := []byte("Go语言")
+reader := bytes.NewReader(data)
+
+buf := make([]byte, 4)
+n, err := reader.Read(buf)
+if err != nil {
+    log.Fatal(err)
+}
+fmt.Println(string(buf[:n])) // "Go语"
+
+```
+
+> 读取数据 - 使用Read方法从Reader中读取数据
+
+### 7.3 应用
+
+使用bytes包处理日志文件
+
+假设您需要处理一个日志文件，该文件包含多行文本数据。您可以使用bytes包中的函数高效地读取和处理这些数据。
+
+```go
+
+func processLogData(logData []byte) {
+    lines := bytes.Split(logData, []byte("\n"))
+    for _, line := range lines {
+        if bytes.Contains(line, []byte("ERROR")) {
+            fmt.Println("Error found:", string(line))
+        }
+    }
+}
+```
+
+构建动态字符串内容
+
+在一个Web应用中，您可能需要动态构建HTML或JSON响应。bytes.Buffer在这方面非常有用，它可以帮助您高效地构建字符串。
+```go
+var buffer bytes.Buffer
+for i := 0; i < 3; i++ {
+    buffer.WriteString(fmt.Sprintf("<p>Paragraph %d</p>", i+1))
+}
+fmt.Println(buffer.String())
+```
+
+解析二进制数据
+
+当您需要从二进制数据中读取特定格式的信息时，bytes.Reader非常有用。例如，读取一个二进制文件的特定部分。
+
+```go
+
+func readBinaryData(data []byte, offset int64, length int) ([]byte, error) {
+    reader := bytes.NewReader(data)
+    _, err := reader.Seek(offset, io.SeekStart)
+    if err != nil {
+        return nil, err
+    }
+
+    buf := make([]byte, length)
+    _, err = reader.Read(buf)
+    if err != nil {
+        return nil, err
+    }
+
+    return buf, nil
+}
+```

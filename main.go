@@ -10,3 +10,12 @@ func main() {
 
 
 }
+
+func processLogData(logData []byte) {
+    lines := bytes.Split(logData, []byte("\n"))
+    for _, line := range lines {
+        if bytes.Contains(line, []byte("ERROR")) {
+            fmt.Println("Error found:", string(line))
+        }
+    }
+}
