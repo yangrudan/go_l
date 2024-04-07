@@ -492,3 +492,76 @@ type Namer interface {
 }
 ```
 （按照约定，只包含一个方法的）接口的名字由方法名加 [e]r 后缀组成，例如 Printer、Reader、Writer、Logger、Converter 等等。还有一些不常用的方式（当后缀 er 不合适时），比如 Recoverable，此时接口名以 able 结尾，或者以 I 开头（像 .NET 或 Java 中那样）。
+
+实现接口的getValue() 就可以调用showValue
+
+```go
+package main
+
+import "fmt"
+
+type stockPosition struct {
+	ticker     string
+	sharePrice float32
+	count      float32
+}
+
+/* method to determine the value of a stock position */
+func (s stockPosition) getValue() float32 {
+	return s.sharePrice * s.count
+}
+
+type car struct {
+	make  string
+	model string
+	price float32
+}
+
+/* method to determine the value of a car */
+func (c car) getValue() float32 {
+	return c.price
+}
+
+/* contract that defines different things that have value */
+type valuable interface {
+	getValue() float32
+}
+
+func showValue(asset valuable) {
+	fmt.Printf("Value of the asset is %f\n", asset.getValue())
+}
+
+func main() {
+	var o valuable = stockPosition{"GOOG", 577.20, 4}
+	showValue(o)
+	o = car{"BMW", "M3", 66500}
+	showValue(o)
+}
+```
+
+### 10.1 接口的嵌套
+
+一个接口可以包含一个或多个其他的接口，这相当于直接将这些内嵌接口的方法列举在外层接口中一样。
+
+比如接口 File 包含了 ReadWrite 和 Lock 的所有方法，它还额外有一个 Close() 方法。
+
+
+```go 
+type ReadWrite interface {
+    Read(b Buffer) bool
+    Write(b Buffer) bool
+}
+type Lock interface {
+    Lock()
+    Unlock()
+}
+type File interface {
+    ReadWrite
+    Lock
+    Close()
+}
+
+```
+
+### 10.2 类型断言
+
