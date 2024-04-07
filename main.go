@@ -17,8 +17,7 @@ func (sq *Square) Area() float32 {
 }
 
 func main() {
-	sq1 := new(Square)
-	sq1.side = 5
+	sq1 := &Square{5}
 
 	areaIntf := Shaper(sq1)
 	fmt.Printf("The square has area: %f\n", areaIntf.Area())
