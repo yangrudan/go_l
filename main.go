@@ -20,7 +20,6 @@ func main() {
 	sq1 := new(Square)
 	sq1.side = 5
 
-	var areaIntf Shaper
-	areaIntf = sq1  //接口变量包含一个指向 Square 变量的引用
+	areaIntf := Shaper(sq1)
 	fmt.Printf("The square has area: %f\n", areaIntf.Area())
 }
